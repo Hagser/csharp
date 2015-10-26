@@ -37,6 +37,9 @@
     <ApplicationIcon>MIPWC.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DirectShowLib-2005">
+      <HintPath>..\..\lib\DirectShowLib-2005.dll</HintPath>
+    </Reference>
     <Reference Include="Emgu.CV">
       <HintPath>..\..\lib\Emgu\Emgu.CV.dll</HintPath>
     </Reference>

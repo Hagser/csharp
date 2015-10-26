@@ -39,8 +39,10 @@
             this.intervallToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.runServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.openWebsiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.deviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -73,9 +75,11 @@
             this.intervallToolStripMenuItem1,
             this.toolStripMenuItem2,
             this.runServerToolStripMenuItem,
-            this.openWebsiteToolStripMenuItem});
+            this.openWebsiteToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.deviceToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 170);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 198);
             // 
             // saveFilesToolStripMenuItem
             // 
@@ -102,6 +106,7 @@
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
             this.refreshToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.refreshToolStripMenuItem.Text = "Refresh";
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
             // 
             // intervallToolStripMenuItem1
             // 
@@ -122,17 +127,28 @@
             this.runServerToolStripMenuItem.Text = "Run server";
             this.runServerToolStripMenuItem.CheckedChanged += new System.EventHandler(this.runServerToolStripMenuItem_CheckedChanged);
             // 
-            // timer2
-            // 
-            this.timer2.Interval = 300000;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
             // openWebsiteToolStripMenuItem
             // 
             this.openWebsiteToolStripMenuItem.Name = "openWebsiteToolStripMenuItem";
             this.openWebsiteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openWebsiteToolStripMenuItem.Text = "Open website";
             this.openWebsiteToolStripMenuItem.Click += new System.EventHandler(this.openWebsiteToolStripMenuItem_Click);
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 300000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            // 
+            // deviceToolStripMenuItem
+            // 
+            this.deviceToolStripMenuItem.Name = "deviceToolStripMenuItem";
+            this.deviceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deviceToolStripMenuItem.Text = "Device";
             // 
             // Form1
             // 
@@ -164,6 +180,8 @@
         private System.Windows.Forms.ToolStripMenuItem intervallToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem openWebsiteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem deviceToolStripMenuItem;
     }
 }
 

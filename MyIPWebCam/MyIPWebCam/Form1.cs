@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+
+using System.Xml.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Emgu.CV;
@@ -13,6 +15,7 @@ using System.IO;
 using System.Net;
 using Emgu.CV.CvEnum;
 using System.Diagnostics;
+using System.Threading;
 
 namespace MyIPWebCam
 {
@@ -45,9 +48,44 @@ namespace MyIPWebCam
         {
             try
             {
-                _capture = new Capture(0);
-                _capture.SetCaptureProperty(CAP_PROP.CV_CAP_PROP_FRAME_WIDTH, 1280);
-                _capture.SetCaptureProperty(CAP_PROP.CV_CAP_PROP_FRAME_HEIGHT, 720);
+                var list = DirectShowLib.DsDevice.GetDevicesOfCat(DirectShowLib.FilterCategory.VideoInputDevice);
+                int idev = 0;
+                foreach (var dev in list)
+                {
+                    var tsi = new ToolStripMenuItem(dev.Name);
+                    tsi.Tag = idev;
+                    tsi.CheckOnClick = true;
+                    tsi.Click += (a, b) => {
+                        var ttt = (ToolStripMenuItem)a;
+                        if (ttt != null && ttt.Checked)
+                        {
+                            foreach (ToolStripMenuItem tm in deviceToolStripMenuItem.DropDownItems)
+                                tm.Checked = false;
+                            int nTries = 0;
+                            timer1.Enabled = false;
+                            while (nTries < 5)
+                            {
+                                try
+                                {
+                                    _capture = new Capture(Convert.ToInt32(ttt.Tag));
+                                    _capture.SetCaptureProperty(CAP_PROP.CV_CAP_PROP_FRAME_WIDTH, 1280);
+                                    _capture.SetCaptureProperty(CAP_PROP.CV_CAP_PROP_FRAME_HEIGHT, 720);
+                                    nTries = 20;
+                                    ttt.Checked = true;
+                                }
+                                catch {
+                                    Thread.Sleep(100);
+                                    nTries++;
+                                }
+
+                            }
+
+                            timer1.Enabled = true;
+                        }                        
+                    };
+                    idev++;
+                    deviceToolStripMenuItem.DropDownItems.Add(tsi);
+                }
             }
             catch { }
             string[] inums = new string[] { "1 sek", "2 sek", "5 sek", "10 sek", "20 sek", "30 sek", "1 min", "2 min", "5 min", "10 min", "20 min", "30 min", "1 tim", "2 tim", "5 tim", "8 tim", "10 tim", "12 tim", "24 tim" };
@@ -313,6 +351,9 @@ namespace MyIPWebCam
             }
         }
 
-
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = true;
+        }
     }
 }
