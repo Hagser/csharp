@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Threading;
 
 namespace MyKillNonResponders
 {
@@ -27,6 +28,14 @@ namespace MyKillNonResponders
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            ThreadPool.QueueUserWorkItem(getprocesses, null);
+        }
+        bool bgetting = false;
+        private void getprocesses(object state)
+        {
+            if (bgetting)
+                return;
+            bgetting = true;
             List<Proc> processes = dataGridView1.DataSource as List<Proc>;
             foreach (Process p in Process.GetProcesses())
             {
@@ -40,14 +49,16 @@ namespace MyKillNonResponders
                     if (nonresponders.ContainsKey(p.Id))
                         nonresponders.Remove(p.Id);
                 }
-                var proc = processes.FirstOrDefault(x => x.MainWindowHandle == p.MainWindowHandle && x.Id==p.Id && x.ProcessName == p.ProcessName);
-                if (proc!=null)
+                var proc = processes.FirstOrDefault(x => x.MainWindowHandle == p.MainWindowHandle && x.Id == p.Id && x.ProcessName == p.ProcessName);
+                if (proc != null)
                 {
                     proc.Reload(p);
                 }
                 else
                 {
-                    processes.Add(new Proc(p));
+                    this.Invoke((MethodInvoker)delegate {
+                        processes.Add(new Proc(p));
+                    });                    
                 }
             }
 
@@ -63,9 +74,13 @@ namespace MyKillNonResponders
                 }
             }
 
-
-            dataGridView1.RefreshEdit();
-            dataGridView1.Update();
+            this.Invoke((MethodInvoker)delegate
+            {
+                dataGridView1.DataSource = processes;
+                //dataGridView1.RefreshEdit();
+                dataGridView1.Update();
+            });
+            bgetting = false;
         }
     }
     public class Proc
