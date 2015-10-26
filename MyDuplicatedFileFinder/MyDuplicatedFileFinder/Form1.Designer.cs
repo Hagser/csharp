@@ -40,6 +40,7 @@
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hideFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hideFilenameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hideExtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -47,7 +48,6 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.chkShow = new System.Windows.Forms.CheckBox();
-            this.hideExtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -107,7 +107,7 @@
             this.hideFilenameToolStripMenuItem,
             this.hideExtToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(169, 164);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(169, 142);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // selectFolderToolStripMenuItem
@@ -148,6 +148,12 @@
             this.hideFilenameToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.hideFilenameToolStripMenuItem.Text = "Hide filename";
             this.hideFilenameToolStripMenuItem.Click += new System.EventHandler(this.hideFilenameToolStripMenuItem_Click);
+            // 
+            // hideExtToolStripMenuItem
+            // 
+            this.hideExtToolStripMenuItem.Name = "hideExtToolStripMenuItem";
+            this.hideExtToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.hideExtToolStripMenuItem.Text = "Show ext";
             // 
             // textBox1
             // 
@@ -205,6 +211,7 @@
             // 
             // chkShow
             // 
+            this.chkShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkShow.AutoSize = true;
             this.chkShow.Location = new System.Drawing.Point(12, 413);
             this.chkShow.Name = "chkShow";
@@ -212,12 +219,6 @@
             this.chkShow.TabIndex = 12;
             this.chkShow.Text = "show dupl.";
             this.chkShow.UseVisualStyleBackColor = true;
-            // 
-            // hideExtToolStripMenuItem
-            // 
-            this.hideExtToolStripMenuItem.Name = "hideExtToolStripMenuItem";
-            this.hideExtToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.hideExtToolStripMenuItem.Text = "Show ext";
             // 
             // Form1
             // 

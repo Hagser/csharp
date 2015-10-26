@@ -256,7 +256,8 @@ namespace MyWeatherCams
             this.UseWaitCursor = true;
             try
             {
-                var files = System.IO.Directory.EnumerateFiles(strDownloadPath + "\\webcams\\" + img + "\\" + DateTime.Today.ToString("yyyyMMdd") + "\\").Select(x => new FileInfo(x)).Where(file => file.Extension.Equals(".jpg", StringComparison.InvariantCultureIgnoreCase) && file.Length > 0).OrderByDescending(x => x.LastWriteTime).Take(300).OrderBy(x => x.LastWriteTime).ToArray();
+                //var files = System.IO.Directory.EnumerateFiles(strDownloadPath + "\\webcams\\" + img + "\\" + DateTime.Today.ToString("yyyyMMdd") + "\\").Select(x => new FileInfo(x)).Where(file => file.Extension.Equals(".jpg", StringComparison.InvariantCultureIgnoreCase) && file.Length > 0).OrderByDescending(x => x.LastWriteTime).Take(300).OrderBy(x => x.LastWriteTime).ToArray();
+                var files = System.IO.Directory.EnumerateFiles(strDownloadPath + "\\webcams\\" + img + "\\","*.jpg",SearchOption.AllDirectories).Select(x => new FileInfo(x)).Where(file => file.Extension.Equals(".jpg", StringComparison.InvariantCultureIgnoreCase) && file.Length > 0).OrderByDescending(x => x.LastWriteTime).Take(500).OrderBy(x => x.LastWriteTime).ToArray();
                 if (pf != null)
                     pf.Close();
                 pf = new PictureForm(files);
