@@ -265,9 +265,9 @@ namespace MyWeatherCams
                 pf.Left = this.Right - 50;
                 pf.Top = this.Top;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                string s = ex.Message;
+
             }
             finally
             {
