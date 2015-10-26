@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="MyPhotoSlideshow.PhotoNavigator"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+xmlns:controlsToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit">
+    <Grid x:Name="LayoutRoot" VerticalAlignment="Stretch" Margin="1" 
+          Width="Auto" Height="Auto" SizeChanged="LayoutRoot_SizeChanged" HorizontalAlignment="Stretch"
+          Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer VerticalScrollBarVisibility="Visible" Margin="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MouseWheel="ISPScroller_MouseWheel" Grid.Row="0" x:Name="ISPScroller" MinHeight="80">
+            <controlsToolkit:WrapPanel VerticalAlignment="Stretch" Margin="0" MinHeight="80" HorizontalAlignment="Stretch" Height="Auto" x:Name="ImageWrapPanel" Orientation="Horizontal"></controlsToolkit:WrapPanel>
+        </ScrollViewer>
+        <StackPanel x:Name="SPControls" Orientation="Horizontal" Height="25" MaxHeight="25" Margin="0,0,0,5" Grid.Row="1" HorizontalAlignment="Center">
+            <Button Content="|&lt;&lt;" x:Name="btnPrevDate" Click="btnPrevDate_Click" HorizontalAlignment="Center" Width="50" Height="25"></Button>
+            <Button Content="&lt;&lt;" x:Name="btnPrev" Click="btnPrev_Click" HorizontalAlignment="Center" Width="50" Height="25"></Button>
+            <Button Content="&gt;" x:Name="btnPlayPause" Click="btnPlayPause_Click" HorizontalAlignment="Center" Width="50" Height="25"></Button>
+            <Button Content="&gt;&gt;" x:Name="btnNext" Click="btnNext_Click" HorizontalAlignment="Center" Width="50" Height="25"></Button>
+            <Button Content="&gt;&gt;|" x:Name="btnNextDate" Click="btnNextDate_Click" HorizontalAlignment="Center" Width="50" Height="25"></Button>
+            <controls:DatePicker x:Name="dpDate" SelectedDateChanged="dpDate_SelectedDateChanged" KeyUp="dpDate_KeyUp" Width="99" Height="25"/>
+            <Image x:Name="imgFullScreen" MouseLeftButtonUp="imgFullScreen_MouseLeftButtonUp" Source="Resources/white.png"/>
+            <Slider x:Name="sInterval" Minimum="1" Maximum="10" ValueChanged="sInterval_ValueChanged" Width="100"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

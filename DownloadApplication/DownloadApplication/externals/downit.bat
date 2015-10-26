@@ -1,0 +1,2 @@
+rtmpdump -r "rtmp://130.242.59.75/" -W http://www.ur.se/play/jwplayer/player.swf -t "rtmp://130.242.59.75/ondemand/" -a ondemand -p  -y mp4: 173000-173999/173268-11.mp4 -o "F:\media\SVT\blandat\Geografens_testamente__Norden__Tre_huvudstäder__UR_Play.mp4"
+pause

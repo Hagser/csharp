@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>Map</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 100% }
+    </style>  
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDx-DlIkkaeOa-KN22MGAr0vHDGTHj1IA8&sensor=false&libraries=visualization"></script>
+    <script type="text/javascript">
+      var map=null;
+      var markers = new Array();
+      var wls = new Array();
+      var times = new Array();
+      var infowindow;
+      var heatmap = null;
+      
+      function initialize() {
+		  var mypos = new google.maps.LatLng(57, 16);
+		  var mapOptions = {
+		  center: mypos,
+		  zoom: 5};
+
+		  map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
+		  map.zoom_changed = hideShow;
+		  map.bounds_changed = hideShow;
+		  window.external.addWeather();
+      }
+      function clearWeather()
+      {
+        ha();
+        for(var i=0;i<markers.length;i++)
+        {
+          var m = markers[i];
+          m.setMap(null);
+        }
+        markers=new Array();
+      }
+      function showHeat()
+      {
+          try{
+              heatmap = new google.maps.visualization.HeatmapLayer({
+                  data: wls,
+                  dissipation: false,
+                  radius: 20,
+                  map: map
+              });
+          }
+          catch (ex)
+          {
+              alert(ex.toString());
+          }
+      }
+      var tidx=0;
+      function runTimes()
+      {
+          if (false)
+          {
+              heatmap = new google.maps.visualization.HeatmapLayer({
+                  data: wls,
+                  dissipation: false,
+                  radius:20,
+                  map: map
+              });
+
+          }
+          if(tidx>=times.length)
+          {
+			tidx=0;
+			return;
+          }
+          var t = times[tidx];
+          if(t!=null)
+          {
+			  var d = t.split('_');
+
+			  var mypos = new google.maps.LatLng(d[11], d[12]);
+			  
+				window.external.setText(d[10]);
+				tidx++;
+				while ( tidx<times.length && !check_is_pos_in_or_out(mypos)) {  
+					t = times[tidx];
+					d = t.split('_');
+					mypos = new google.maps.LatLng(d[11], d[12]); 
+					tidx++;
+				}
+				toggleWeather(d[0],'','','',d[1],d[2],d[3],d[4],d[5],d[6],d[7],d[8],d[9],d[10]);
+          }
+          setTimeout(runTimes,1);
+        }
+		function getBounds()
+		{	
+			try
+			{
+				if(map!=null)
+				{
+					var b = map.getBounds();
+					if(!b.isEmpty())
+					{
+						var ne = b.getNorthEast();
+						var sw = b.getSouthWest();
+						window.external.setBounds(ne.lat(),ne.lng(),sw.lat(),sw.lng());
+					}
+				}
+			}
+			catch(ex)
+			{}
+		}
+        function clearTimes()
+        {
+			times=new Array();
+			tidx=0;
+			for(var i=0;i<markers.length;i++)
+			{
+			  var m = markers[i];
+			  var purl = "http://trafikinfo.trafikverket.se/LIT/images/ikoner/224.gif";
+			  m.setIcon(purl);
+			}
+        }
+        function addTimes(name,temp,pid,wid,awid,mwid,prec,wind,awind,mwind,time,lat,lng)
+        {
+			var t = name+"_"+temp+"_"+pid+"_"+wid+"_"+awid+"_"+mwid+"_"+prec+"_"+wind+"_"+awind+"_"+mwind+"_"+time+"_"+lat+"_"+lng;
+			times.push(t);
+        }
+        function toggleWeather(name,lat,lng,id,temp,pid,wid,awid,mwid,prec,wind,awind,mwind,mtime)
+        {
+        var purl = "http://trafikinfo.trafikverket.se/LIT/images/ikoner/"+ (pid!=224?pid:(wid!=710?wid:(awid!=710?awid:(mwid!=710?mwid:pid)))) +".gif"
+        var mypos = new google.maps.LatLng(lat, lng);
+
+        var marker;
+        for(var i=0;i<markers.length;i++)
+        {
+			var m2 = markers[i];
+			var ttl = m2.title+"";
+			if(ttl.indexOf(name+"_")!=-1)
+			{
+				marker=m2;
+				marker.setIcon(purl);
+				marker.setTitle(name+"_Temp:"+temp+"\nNb:"+prec+"\nWind:"+wind+"\nAWind:"+awind+"\nMWind:"+mwind+"\nMTime:"+mtime);
+				break;
+			}
+        }
+        if(marker==null)
+        {
+			marker = new google.maps.Marker({
+			position: mypos, map: map, title: name+"_Temp:"+temp+"\nNb:"+prec+"\nWind:"+wind+"\nAWind:"+awind+"\nMWind:"+mwind+"\nMTime:"+mtime,icon:purl
+			});
+
+			marker.setVisible(false);
+			markers.push(marker);
+        }
+
+        var wl = null;
+        for (var i = 0; i < wls.length; i++) {
+            var m2 = wls[i];
+            var ttl = m2.location;
+            if (ttl.lat()==lat && ttl.lng()==lng) {
+                wl = m2;
+                wl.weight = Math.pow(eval(temp)+50, 10);
+                break;
+            }
+        }
+        if (wl == null) {
+            wl = {
+                location: new google.maps.LatLng(lat, lng),
+                weight: Math.pow(eval(temp)+50, 10)
+            };
+
+            wls.push(wl);
+        }
+
+
+      }
+        
+      function panTo(lat, lng)
+      {
+          var mypos = new google.maps.LatLng(lat, lng);
+          map.panTo(mypos);
+      }
+      function ha(){visAll(false)}
+      function va(){visAll(true)}
+      function visAll(val)
+      {
+	    for(var i=0;i<markers.length;i++)
+        {
+	        var marker = markers[i];
+	        marker.setVisible(val);
+        }
+      }
+    function hideShow()
+    {
+        var bounds = map.getBounds()
+        var zoom = map.getZoom();
+        if (zoom >= 6) {
+            var msin = new Array();
+            var msout = new Array();
+            for (var i = 0; i < markers.length; i++) {
+                var marker = markers[i];
+                if (check_is_in_or_out(marker)) {
+                    msin.push(marker);
+                }
+                else {
+                    msout.push(marker);
+                }
+            }
+            visMs(true, msin);
+            visMs(false, msout);
+        }
+        else {
+            visAll(false);
+        }
+    }
+    function check_is_in_or_out(marker) {
+        return map.getBounds().contains(marker.getPosition());
+    }
+    function check_is_pos_in_or_out(pos) {
+        return map.getBounds().contains(pos);
+    }
+    function visMs(val,ms)
+    {
+        for(var i=0;i<ms.length;i++)
+        {
+            var marker = ms[i];
+            marker.setVisible(val);
+        }
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+        
+    </script>
+  </head>
+  <body style="background-color:silver">
+    <div id="map-canvas"></div>
+  </body>
+</html>

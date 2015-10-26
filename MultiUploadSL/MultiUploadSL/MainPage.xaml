@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="MultiUploadSL.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d" d:DesignWidth="640" d:DesignHeight="480" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+    <UserControl.Resources>
+        <DataTemplate x:Name="Local_FileListTemplate">
+            <StackPanel Orientation="Horizontal">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="220"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <TextBlock Text="{Binding Path=Name}" TextAlignment="Left" Grid.Row="0" Grid.Column="0" Width="220" Height="20"></TextBlock>
+                    <TextBlock Text="{Binding Path=RealSize}" TextAlignment="Right" Grid.Row="0" Grid.Column="1" Width="50" Height="20"></TextBlock>
+                    <ProgressBar Maximum="100" Minimum="0" Grid.Row="0" Grid.Column="2" Width="100" Height="20" Value="{Binding Path=ProgressValue}" ToolTipService.ToolTip="{Binding Path=Progress}"></ProgressBar>
+                    </Grid>
+            </StackPanel>
+
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot" Width="400">
+        <StackPanel>
+            <TextBlock>Golf-id:</TextBlock>
+            <TextBox Name="txtGolfID" TextChanged="TextBox_TextChanged"></TextBox>
+            <TextBlock>Namn:</TextBlock>
+            <TextBox Name="txtName" TextChanged="TextBox_TextChanged"></TextBox>
+            <TextBlock>Adress:</TextBlock>
+            <TextBox Name="txtAdress" TextChanged="TextBox_TextChanged"></TextBox>
+            <TextBlock>Epost:</TextBlock>
+            <TextBox Name="txtEmail" TextChanged="TextBox_TextChanged"></TextBox>
+            <TextBlock>Bilder:</TextBlock>
+            <ListBox Name="lst" KeyUp="ListBox_KeyUp" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="200" ItemTemplate="{StaticResource Local_FileListTemplate}"></ListBox>
+            <TextBlock Name="lbl"></TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <Button Click="Button_Click" Width="100" Content="Välj"></Button>
+                <Button Click="btnUpload_Click" x:Name="btnUpload" IsEnabled="False" Width="100" Content="Ladda upp"></Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

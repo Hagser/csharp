@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Web Developer Express 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyDocsSL", "MyDocsSL\MyDocsSL.csproj", "{506BD7DE-1F04-4EF1-92EC-5A1E44DDEBCB}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "MyDocsSL.Web", "MyDocsSL.Web\", "{7FB359A8-F13F-42A7-B919-FE543FDEB266}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/MyDocsSL.Web"
+		Debug.AspNetCompiler.PhysicalPath = "MyDocsSL.Web\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\MyDocsSL.Web\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/MyDocsSL.Web"
+		Release.AspNetCompiler.PhysicalPath = "MyDocsSL.Web\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\MyDocsSL.Web\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "24336"
+		DefaultWebSiteLanguage = "Visual C#"
+		ProjOutputReferences = "{506BD7DE-1F04-4EF1-92EC-5A1E44DDEBCB}|ClientBin|false;"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{506BD7DE-1F04-4EF1-92EC-5A1E44DDEBCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{506BD7DE-1F04-4EF1-92EC-5A1E44DDEBCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{506BD7DE-1F04-4EF1-92EC-5A1E44DDEBCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{506BD7DE-1F04-4EF1-92EC-5A1E44DDEBCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FB359A8-F13F-42A7-B919-FE543FDEB266}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FB359A8-F13F-42A7-B919-FE543FDEB266}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FB359A8-F13F-42A7-B919-FE543FDEB266}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FB359A8-F13F-42A7-B919-FE543FDEB266}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

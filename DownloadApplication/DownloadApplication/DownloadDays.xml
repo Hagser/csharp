@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Downloads>
+  <Download day="monday" enabled="false" url="http://svtplay.se/t/149535/en_idiot_pa_resa"/>
+  <Download day="monday" enabled="false" url="http://svtplay.se/t/127005/mera_vetenskap"/>
+  <Download day="monday" enabled="true" url="http://svtplay.se/t/173154/"/>
+  <Download day="tuesday" enabled="false" url="http://svtplay.se/t/166063/anno_1790"/>
+  <Download day="tuesday" enabled="true" url="http://svtplay.se/t/102814/vetenskapens_varld"/>
+  <Download day="wednesday" enabled="false" url="http://svtplay.se/t/102649/hjarnkontoret"/>
+  <Download day="wednesday" enabled="false" url="http://urplay.se/164300"/>
+  <Download day="thursday" enabled="false" url="http://svtplay.se/t/127834/piraterna"/>
+  <Download day="thursday" enabled="false" url="http://svtplay.se/t/167662/the_trip"/>
+  <Download day="thursday" enabled="true" url="http://svtplay.se/t/167513/dag"/>
+  <Download day="friday" enabled="false" url="http://svtplay.se/t/102796/plus"/>
+  <Download day="saturday" enabled="false" url="http://svtplay.se/t/102959/pa_sparet"/>
+  <Download day="saturday" enabled="true" url="http://svtplay.se/t/167326/jonathan_ross_show"/>
+  <Download day="sunday" enabled="true" url="http://svtplay.se/t/167290/boardwalk_empire"/>
+</Downloads>

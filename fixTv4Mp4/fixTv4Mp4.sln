@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Windows Desktop
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fixTv4Mp4", "fixTv4Mp4\fixTv4Mp4.csproj", "{BEBDCFEC-4FE8-40F2-B7D9-83300F8DD8EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BEBDCFEC-4FE8-40F2-B7D9-83300F8DD8EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEBDCFEC-4FE8-40F2-B7D9-83300F8DD8EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEBDCFEC-4FE8-40F2-B7D9-83300F8DD8EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEBDCFEC-4FE8-40F2-B7D9-83300F8DD8EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

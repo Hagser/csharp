@@ -1,0 +1,8 @@
+<html>
+<head>
+    <title>MyIpWebCam</title>
+</head>
+<body>
+<a href="/photo.jpg">Direct photo</a>&nbsp;|&nbsp;<a href="/frames">Javascript updated image</a>
+</body>
+</html>

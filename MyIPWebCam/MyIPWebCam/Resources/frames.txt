@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>MyIpWebCam</title>
+    <script type="text/javascript">
+	var timid;
+        function init() {
+            var img = document.getElementById("theimage");
+            var si = document.getElementById("selinterval");
+            var dt = new Date();
+            img.src = "/photo.jpg?x=" + dt+"."+dt.getMilliseconds();
+			if(timid!=null)
+			{
+				window.clearTimeout(timid);
+			}
+			var int = eval(si.options[si.selectedIndex].innerText)*1000;
+			document.title=int;
+            timid = window.setTimeout("init()", int);
+        }
+    </script>
+</head>
+<body onload="init();">
+<a href="/index">Back</a> <select id="selinterval">
+<option>0.5</option>
+<option selected="true">1</option>
+<option>2</option><option>3</option><option>4</option><option>5</option><option>10</option><option>20</option><option>30</option><option>40</option><option>50</option></select><br/>
+<img id="theimage" src="/photo.jpg" alt="" onerror="if(timid!=null){window.clearTimeout(timid);}" />
+</body>
+</html>

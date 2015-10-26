@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfFileinfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Fileinfo" nillable="true" type="tns:Fileinfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFileinfo" nillable="true" type="tns:ArrayOfFileinfo" />
+  <xs:complexType name="Fileinfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Changed" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Size" type="xs:long" />
+      <xs:element minOccurs="0" name="Uri" nillable="true" type="xs:anyURI" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Fileinfo" nillable="true" type="tns:Fileinfo" />
+  <xs:complexType name="ExcelDocument">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="WorkSheets" nillable="true" type="tns:ArrayOfWorkSheet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExcelDocument" nillable="true" type="tns:ExcelDocument" />
+  <xs:complexType name="ArrayOfWorkSheet">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WorkSheet" nillable="true" type="tns:WorkSheet" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWorkSheet" nillable="true" type="tns:ArrayOfWorkSheet" />
+  <xs:complexType name="WorkSheet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Rows" nillable="true" type="tns:ArrayOfExcelRow" />
+      <xs:element minOccurs="0" name="SheetName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WorkSheet" nillable="true" type="tns:WorkSheet" />
+  <xs:complexType name="ArrayOfExcelRow">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ExcelRow" nillable="true" type="tns:ExcelRow" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfExcelRow" nillable="true" type="tns:ArrayOfExcelRow" />
+  <xs:complexType name="ExcelRow">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Row" type="xs:int" />
+      <xs:element minOccurs="0" name="A" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="B" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="C" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="D" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="E" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="F" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="G" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="H" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="I" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="J" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="K" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="L" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="M" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="N" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="O" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="P" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="Q" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="R" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="S" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="T" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="U" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="V" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="W" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="X" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="Y" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="Z" nillable="true" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExcelRow" nillable="true" type="tns:ExcelRow" />
+</xs:schema>

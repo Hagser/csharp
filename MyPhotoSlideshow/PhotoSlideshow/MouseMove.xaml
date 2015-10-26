@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="MyPhotoSlideshow.MouseMove"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:pn="clr-namespace:MyPhotoSlideshow"
+    Width="Auto" Height="Auto">
+    <Grid x:Name="LayoutRoot" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="DarkGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="500"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <pn:PhotoNavigator x:Name="photonav" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+    </Grid>
+</UserControl>

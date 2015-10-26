@@ -1,0 +1,16 @@
+.vscode/launch.json
+*.suo
+*.exe
+*.pdb
+*.pfx
+*/*/obj/*/*
+*/*/bin/*/*
+*/obj/*/*
+*/bin/*/*
+*.user
+*.bak
+*.db
+*/_UpgradeReport_Files/*
+*.xap
+*/*/App_Data/*
+MyDocsSL/MyDocsSL.Web/WebLIVE.config

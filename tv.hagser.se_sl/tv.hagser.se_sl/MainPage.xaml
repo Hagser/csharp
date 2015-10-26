@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="tv.hagser.se_sl.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d" d:DesignWidth="640" d:DesignHeight="480">
+    <UserControl.Resources>
+        <Style x:Key="sOrg" TargetType="Border">
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+        <Style x:Key="sAlt" TargetType="Border">
+            <Setter Property="Background" Value="Azure"/>
+        </Style>
+        <Style x:Key="sOld" TargetType="Border">
+            <Setter Property="Background" Value="Silver"/>
+        </Style>
+    </UserControl.Resources>
+  <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="2" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <RadioButton x:Name="chkMain" Content="Main" Checked="chk_Checked" Margin="2,0,0,0" GroupName="View"/>
+            <RadioButton x:Name="chkNow" Content="Now" Checked="chk_Checked" Margin="2,0,0,0" GroupName="View"/>
+            <RadioButton x:Name="chkMatrix" Content="Matrix" Checked="chk_Checked" Margin="2,0,0,0" GroupName="View"/>
+            <RadioButton x:Name="chkChannel" Content="Channel" Checked="chk_Checked" Margin="2,0,0,0" GroupName="View"/>
+            <ComboBox x:Name="channels" VerticalAlignment="Top" Width="150" Margin="2,0,0,0" SelectionChanged="channels_SelectionChanged"/>
+            <Button Content="Add to favorites" Click="Button_Click" Height="20" FontSize="9" Margin="2,0,0,0"/>
+            <Button Content="Edit favorites" Click="Button_Click_2"  Height="20" FontSize="9" Margin="2,0,0,0"/>
+            <Button Content="Remove from favorites" Click="Button_Click_1"  Height="20" FontSize="9" Margin="2,0,0,0"/>
+        </StackPanel>
+
+        <Rectangle VerticalAlignment="Stretch" x:Name="rect" HorizontalAlignment="Stretch" Grid.Row="1">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5" SpreadMethod="Reflect">
+                    <GradientStop Color="#17000000" Offset="1" />
+                    <GradientStop Color="White" Offset="0" />
+                    <GradientStop Color="#B5000000" Offset="0" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <ScrollViewer Grid.Row="1" x:Name="scrollviewer" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" MouseLeftButtonDown="ScrollViewer_MouseLeftButtonDown">
+            <StackPanel x:Name="programmes" Orientation="Vertical" HorizontalAlignment="Stretch"/>
+        </ScrollViewer>
+            <Canvas x:Name="canvas" Visibility="Collapsed" Background="Silver" VerticalAlignment="Stretch" Margin="0,30,0,0" HorizontalAlignment="Stretch" Opacity="1">
+            
+            <Border x:Name="border" BorderBrush="Black" Background="White" Margin="2" BorderThickness="1">
+                <TextBlock x:Name="info" VerticalAlignment="Stretch" Width="400" TextAlignment="Left" TextWrapping="Wrap"/>
+            </Border>
+            <Image x:Name="infoimg" Source="/images/close.png" MouseLeftButtonDown="ScrollViewer_MouseLeftButtonDown" Height="16" Width="16"/>
+        </Canvas>
+    </Grid>
+</UserControl>

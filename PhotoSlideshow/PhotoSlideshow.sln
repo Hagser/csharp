@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Web Developer Express 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoSlideshow", "PhotoSlideshow\PhotoSlideshow.csproj", "{15004535-2E9C-490F-8AAF-68152B6EE192}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FDC95FEF-EE69-490D-B5E7-F41DDC91682E} = {FDC95FEF-EE69-490D-B5E7-F41DDC91682E}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoSlideshow.Web", "PhotoSlideshow.Web\PhotoSlideshow.Web.csproj", "{FDC95FEF-EE69-490D-B5E7-F41DDC91682E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{15004535-2E9C-490F-8AAF-68152B6EE192}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15004535-2E9C-490F-8AAF-68152B6EE192}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15004535-2E9C-490F-8AAF-68152B6EE192}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15004535-2E9C-490F-8AAF-68152B6EE192}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDC95FEF-EE69-490D-B5E7-F41DDC91682E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDC95FEF-EE69-490D-B5E7-F41DDC91682E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDC95FEF-EE69-490D-B5E7-F41DDC91682E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDC95FEF-EE69-490D-B5E7-F41DDC91682E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="FileService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:24336/MyDocsSL.Web/FileService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:24336/MyDocsSL.Web/FileService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:24336/MyDocsSL.Web/FileService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IFileService_ListFiles_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListFiles" />
+  </wsdl:message>
+  <wsdl:message name="IFileService_ListFiles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListFilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFileService_DeleteFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFile" />
+  </wsdl:message>
+  <wsdl:message name="IFileService_DeleteFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFileService_RenameFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:RenameFile" />
+  </wsdl:message>
+  <wsdl:message name="IFileService_RenameFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RenameFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFileService_ListVersions_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListVersions" />
+  </wsdl:message>
+  <wsdl:message name="IFileService_ListVersions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListVersionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFileService_DeleteVersion_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteVersion" />
+  </wsdl:message>
+  <wsdl:message name="IFileService_DeleteVersion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFileService_GetExcelDocument_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetExcelDocument" />
+  </wsdl:message>
+  <wsdl:message name="IFileService_GetExcelDocument_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetExcelDocumentResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IFileService">
+    <wsdl:operation name="ListFiles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFileService/ListFiles" message="tns:IFileService_ListFiles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFileService/ListFilesResponse" message="tns:IFileService_ListFiles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFileService/DeleteFile" message="tns:IFileService_DeleteFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFileService/DeleteFileResponse" message="tns:IFileService_DeleteFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RenameFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFileService/RenameFile" message="tns:IFileService_RenameFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFileService/RenameFileResponse" message="tns:IFileService_RenameFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListVersions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFileService/ListVersions" message="tns:IFileService_ListVersions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFileService/ListVersionsResponse" message="tns:IFileService_ListVersions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteVersion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFileService/DeleteVersion" message="tns:IFileService_DeleteVersion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFileService/DeleteVersionResponse" message="tns:IFileService_DeleteVersion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExcelDocument">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFileService/GetExcelDocument" message="tns:IFileService_GetExcelDocument_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFileService/GetExcelDocumentResponse" message="tns:IFileService_GetExcelDocument_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IFileService" type="tns:IFileService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListFiles">
+      <soap:operation soapAction="http://tempuri.org/IFileService/ListFiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFile">
+      <soap:operation soapAction="http://tempuri.org/IFileService/DeleteFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RenameFile">
+      <soap:operation soapAction="http://tempuri.org/IFileService/RenameFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListVersions">
+      <soap:operation soapAction="http://tempuri.org/IFileService/ListVersions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteVersion">
+      <soap:operation soapAction="http://tempuri.org/IFileService/DeleteVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExcelDocument">
+      <soap:operation soapAction="http://tempuri.org/IFileService/GetExcelDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FileService">
+    <wsdl:port name="BasicHttpBinding_IFileService" binding="tns:BasicHttpBinding_IFileService">
+      <soap:address location="http://localhost:24336/MyDocsSL.Web/FileService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

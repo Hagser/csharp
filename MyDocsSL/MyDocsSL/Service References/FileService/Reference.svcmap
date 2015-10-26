@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="07295468-9e6d-471c-a573-ac8b8e23c4e9" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:24336/MyDocsSL.Web/FileService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="FileService.disco" MetadataType="Disco" ID="ec58ee9f-927b-4809-926c-6ff7af7a2727" SourceId="1" SourceUrl="http://localhost:24336/MyDocsSL.Web/FileService.svc?disco" />
+    <MetadataFile FileName="FileService2.xsd" MetadataType="Schema" ID="dc59c2f1-35bd-48a3-8569-806a968283f9" SourceId="1" SourceUrl="http://localhost:24336/MyDocsSL.Web/FileService.svc?xsd=xsd2" />
+    <MetadataFile FileName="FileService.wsdl" MetadataType="Wsdl" ID="27fc5ae1-ab89-49d5-be8d-c4487424f797" SourceId="1" SourceUrl="http://localhost:24336/MyDocsSL.Web/FileService.svc?wsdl" />
+    <MetadataFile FileName="FileService.xsd" MetadataType="Schema" ID="e616df04-f1bf-4938-a321-c058a8e75a69" SourceId="1" SourceUrl="http://localhost:24336/MyDocsSL.Web/FileService.svc?xsd=xsd1" />
+    <MetadataFile FileName="FileService1.xsd" MetadataType="Schema" ID="1b2510a9-62a5-48a8-b2f8-223b0e48c436" SourceId="1" SourceUrl="http://localhost:24336/MyDocsSL.Web/FileService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
