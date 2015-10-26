@@ -262,7 +262,7 @@ namespace MyWeatherCams
                     pf.Close();
                 pf = new PictureForm(files);
                 pf.Show();
-                pf.Left = this.Right - 50;
+                pf.Left = this.Right - 10;
                 pf.Top = this.Top;
             }
             catch (Exception)
