@@ -21,7 +21,7 @@ namespace MyAppRunner
         {
             InitializeComponent();
             Application.Idle += new EventHandler(Application_Idle);
-            foreach(string file in Directory.EnumerateFiles(@"C:\Users\jh\Documents\hcdev\trunk\","*.exe",SearchOption.AllDirectories).OrderByDescending(x=>new FileInfo(x).LastWriteTime))
+            foreach(string file in Directory.EnumerateFiles(@"C:\Users\johan\Documents\hcdev\trunk\","*.exe",SearchOption.AllDirectories).OrderByDescending(x=>new FileInfo(x).LastWriteTime))
                 if (file.Contains(@"\bin\Release\") && !file.Contains("setup.exe") && !file.Contains(".vshost") && !file.Contains("MyAppRunner"))
                     apps.Add(new MyApps(){Path=file});
         }
