@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.lblFilesCount = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.selectFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,45 +41,50 @@
             this.hideFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hideFilenameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hideExtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.txtFindSize = new System.Windows.Forms.TextBox();
+            this.lblDirName = new System.Windows.Forms.Label();
+            this.txtFindExt = new System.Windows.Forms.TextBox();
+            this.lblSelectedSize = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.chkLDrives = new System.Windows.Forms.CheckedListBox();
             this.chkShow = new System.Windows.Forms.CheckBox();
+            this.btnBrowse = new System.Windows.Forms.Button();
+            this.chkBrowsed = new System.Windows.Forms.CheckBox();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.selectOneOfAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selectAllButOneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // btnSearch
             // 
-            this.button1.Location = new System.Drawing.Point(12, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Search";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnSearch.Location = new System.Drawing.Point(12, 12);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 0;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // button2
+            // btnCancel
             // 
-            this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(12, 41);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Stop";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnCancel.Enabled = false;
+            this.btnCancel.Location = new System.Drawing.Point(12, 41);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 2;
+            this.btnCancel.Text = "Stop";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label1
+            // lblFilesCount
             // 
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(12, 67);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 13);
-            this.label1.TabIndex = 3;
+            this.lblFilesCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblFilesCount.Location = new System.Drawing.Point(12, 97);
+            this.lblFilesCount.Name = "lblFilesCount";
+            this.lblFilesCount.Size = new System.Drawing.Size(75, 13);
+            this.lblFilesCount.TabIndex = 3;
             // 
             // dataGridView1
             // 
@@ -105,9 +110,12 @@
             this.deleteToolStripMenuItem,
             this.hideFilesToolStripMenuItem,
             this.hideFilenameToolStripMenuItem,
-            this.hideExtToolStripMenuItem});
+            this.hideExtToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.selectOneOfAllToolStripMenuItem,
+            this.selectAllButOneToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(169, 142);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(169, 214);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // selectFolderToolStripMenuItem
@@ -155,59 +163,59 @@
             this.hideExtToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.hideExtToolStripMenuItem.Text = "Show ext";
             // 
-            // textBox1
+            // txtFindSize
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 119);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(75, 20);
-            this.textBox1.TabIndex = 5;
-            this.textBox1.Text = "1000000";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtFindSize.Location = new System.Drawing.Point(12, 149);
+            this.txtFindSize.Name = "txtFindSize";
+            this.txtFindSize.Size = new System.Drawing.Size(75, 20);
+            this.txtFindSize.TabIndex = 5;
+            this.txtFindSize.Text = "1000000";
+            this.txtFindSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label2
+            // lblDirName
             // 
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Location = new System.Drawing.Point(12, 85);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 13);
-            this.label2.TabIndex = 6;
+            this.lblDirName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblDirName.Location = new System.Drawing.Point(12, 115);
+            this.lblDirName.Name = "lblDirName";
+            this.lblDirName.Size = new System.Drawing.Size(75, 13);
+            this.lblDirName.TabIndex = 6;
             // 
-            // textBox2
+            // txtFindExt
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 145);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(75, 20);
-            this.textBox2.TabIndex = 7;
-            this.textBox2.Text = "*.*";
+            this.txtFindExt.Location = new System.Drawing.Point(12, 175);
+            this.txtFindExt.Name = "txtFindExt";
+            this.txtFindExt.Size = new System.Drawing.Size(75, 20);
+            this.txtFindExt.TabIndex = 7;
+            this.txtFindExt.Text = "*.*";
             // 
-            // label3
+            // lblSelectedSize
             // 
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Location = new System.Drawing.Point(12, 103);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 13);
-            this.label3.TabIndex = 8;
+            this.lblSelectedSize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblSelectedSize.Location = new System.Drawing.Point(12, 133);
+            this.lblSelectedSize.Name = "lblSelectedSize";
+            this.lblSelectedSize.Size = new System.Drawing.Size(75, 13);
+            this.lblSelectedSize.TabIndex = 8;
             // 
             // progressBar1
             // 
             this.progressBar1.Enabled = false;
-            this.progressBar1.Location = new System.Drawing.Point(12, 171);
+            this.progressBar1.Location = new System.Drawing.Point(12, 201);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(75, 16);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar1.TabIndex = 10;
             this.progressBar1.Visible = false;
             // 
-            // checkedListBox1
+            // chkLDrives
             // 
-            this.checkedListBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.chkLDrives.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.checkedListBox1.CheckOnClick = true;
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(12, 193);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(75, 214);
-            this.checkedListBox1.TabIndex = 11;
+            this.chkLDrives.CheckOnClick = true;
+            this.chkLDrives.FormattingEnabled = true;
+            this.chkLDrives.Location = new System.Drawing.Point(12, 223);
+            this.chkLDrives.Name = "chkLDrives";
+            this.chkLDrives.Size = new System.Drawing.Size(75, 184);
+            this.chkLDrives.TabIndex = 11;
             // 
             // chkShow
             // 
@@ -220,22 +228,62 @@
             this.chkShow.Text = "show dupl.";
             this.chkShow.UseVisualStyleBackColor = true;
             // 
+            // btnBrowse
+            // 
+            this.btnBrowse.Location = new System.Drawing.Point(37, 70);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(50, 23);
+            this.btnBrowse.TabIndex = 13;
+            this.btnBrowse.Text = "Browse";
+            this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            // 
+            // chkBrowsed
+            // 
+            this.chkBrowsed.AutoSize = true;
+            this.chkBrowsed.Location = new System.Drawing.Point(16, 75);
+            this.chkBrowsed.Name = "chkBrowsed";
+            this.chkBrowsed.Size = new System.Drawing.Size(15, 14);
+            this.chkBrowsed.TabIndex = 14;
+            this.chkBrowsed.UseVisualStyleBackColor = true;
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(165, 6);
+            // 
+            // selectOneOfAllToolStripMenuItem
+            // 
+            this.selectOneOfAllToolStripMenuItem.Name = "selectOneOfAllToolStripMenuItem";
+            this.selectOneOfAllToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.selectOneOfAllToolStripMenuItem.Text = "Select one of all";
+            this.selectOneOfAllToolStripMenuItem.Click += new System.EventHandler(this.selectOneOfAllToolStripMenuItem_Click);
+            // 
+            // selectAllButOneToolStripMenuItem
+            // 
+            this.selectAllButOneToolStripMenuItem.Name = "selectAllButOneToolStripMenuItem";
+            this.selectAllButOneToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.selectAllButOneToolStripMenuItem.Text = "Select all but one";
+            this.selectAllButOneToolStripMenuItem.Click += new System.EventHandler(this.selectAllButOneToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(827, 447);
+            this.Controls.Add(this.chkBrowsed);
+            this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.chkShow);
-            this.Controls.Add(this.checkedListBox1);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.chkLDrives);
+            this.Controls.Add(this.lblSelectedSize);
             this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtFindExt);
+            this.Controls.Add(this.lblDirName);
+            this.Controls.Add(this.txtFindSize);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.lblFilesCount);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnSearch);
             this.Name = "Form1";
             this.Text = "MyDuplicatedFileFinder";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -249,14 +297,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label lblFilesCount;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtFindSize;
+        private System.Windows.Forms.Label lblDirName;
+        private System.Windows.Forms.TextBox txtFindExt;
+        private System.Windows.Forms.Label lblSelectedSize;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem selectFolderToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
@@ -264,10 +312,15 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.ToolStripMenuItem hideFilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openFileLocationToolStripMenuItem;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckedListBox chkLDrives;
         private System.Windows.Forms.ToolStripMenuItem hideFilenameToolStripMenuItem;
         private System.Windows.Forms.CheckBox chkShow;
         private System.Windows.Forms.ToolStripMenuItem hideExtToolStripMenuItem;
+        private System.Windows.Forms.Button btnBrowse;
+        private System.Windows.Forms.CheckBox chkBrowsed;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem selectOneOfAllToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem selectAllButOneToolStripMenuItem;
     }
 }
 

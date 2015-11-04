@@ -25,10 +25,10 @@ namespace MyDuplicatedFileFinder
         int findSize {
             get
             {
-                return string.IsNullOrEmpty(textBox1.Text) ? 0 : int.Parse(textBox1.Text);
+                return string.IsNullOrEmpty(txtFindSize.Text) ? 0 : int.Parse(txtFindSize.Text);
             }
             set {
-                textBox1.Text = value.ToString();
+                txtFindSize.Text = value.ToString();
             }
         }
         bool _isprocessing;
@@ -47,33 +47,42 @@ namespace MyDuplicatedFileFinder
         {
             get
             {
-                return string.IsNullOrEmpty(textBox2.Text) ? "*" : textBox2.Text;
+                return string.IsNullOrEmpty(txtFindExt.Text) ? "*" : txtFindExt.Text;
             }
             set
             {
-                textBox2.Text = value;
+                txtFindExt.Text = value;
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
         {
             foundFiles = new List<file>();
             dataGridView1.DataSource = null;
-            label1.Text = foundFiles.Count.ToString();
+            lblFilesCount.Text = foundFiles.Count.ToString();
 
-            button1.Enabled = false;
-            button2.Enabled = true;
+            btnSearch.Enabled = false;
+            btnCancel.Enabled = true;
             IsProcessing = true;
             bBreak = false;
-            foreach (DriveInfo drive in checkedListBox1.CheckedItems)//.Where(drive=>drive.DriveType==System.IO.DriveType.Fixed))
-            {
-                if (bBreak)
-                    break;
-                AppDoEv();
-                label2.Text = drive.RootDirectory.Name;
-                getDirDirs(drive.RootDirectory);
-            }
 
+            if (chkBrowsed.Checked && !string.IsNullOrEmpty(lblDirName.Text))
+            {
+                AppDoEv();
+                getDirDirs(new DirectoryInfo(lblDirName.Text));
+            }
+            else
+            {
+                foreach (DriveInfo drive in chkLDrives.CheckedItems)//.Where(drive=>drive.DriveType==System.IO.DriveType.Fixed))
+                {
+                    if (bBreak)
+                        break;
+                    AppDoEv();
+                    lblDirName.Text = drive.RootDirectory.Name;
+                    getDirDirs(drive.RootDirectory);
+                }
+
+            }
             saveColWidth();
             dataGridView1.DataSource = null;
             var rmf = new List<file>();
@@ -94,13 +103,14 @@ namespace MyDuplicatedFileFinder
                     foundFiles.Remove(fil);
                 }
             }
+
             dataGridView1.DataSource = foundFiles.OrderBy(fil => fil.name).ToList<file>();
 
             setColWidth();
 
-            button1.Enabled = true;
-            button2.Enabled = false;
-            label1.Text = foundFiles.Count.ToString();
+            btnSearch.Enabled = true;
+            btnCancel.Enabled = false;
+            lblFilesCount.Text = foundFiles.Count.ToString();
             IsProcessing = false;
         }
         void getDirDirs(DirectoryInfo di)
@@ -154,7 +164,7 @@ namespace MyDuplicatedFileFinder
 
                 setColWidth();
   
-                label1.Text = foundFiles.Count.ToString();
+                lblFilesCount.Text = foundFiles.Count.ToString();
 
                 if (foundFiles.Count > 200000)
                 {
@@ -197,7 +207,7 @@ namespace MyDuplicatedFileFinder
                 AppDoEv();
                 vsum += long.Parse(row.Cells[1].Value.ToString());
             }
-            label3.Text = getFriendlySize(vsum);
+            lblSelectedSize.Text = getFriendlySize(vsum);
         }
 
         private string getFriendlySize(double vsum)
@@ -417,7 +427,7 @@ namespace MyDuplicatedFileFinder
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            checkedListBox1.Items.AddRange(DriveInfo.GetDrives());
+            chkLDrives.Items.AddRange(DriveInfo.GetDrives());
         }
 
         private void hideFilenameToolStripMenuItem_Click(object sender, EventArgs e)
@@ -434,6 +444,67 @@ namespace MyDuplicatedFileFinder
             IsProcessing = false;
         }
 
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.ShowNewFolderButton = false;
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                lblDirName.Text = fbd.SelectedPath;
+                chkBrowsed.Checked = true;
+            }
+        }
 
+        private void selectOneOfAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var grps = foundFiles.GroupBy(f => f.hash);
+            foreach (var grp in grps)
+            {
+                bool bFound = false;
+                foreach (var fil in grp)
+                {
+                    if (bFound)
+                        break;
+                    string cellname = fil.path;
+                    foreach (DataGridViewRow dgvr in dataGridView1.Rows)
+                    {
+                        if (bFound)
+                            break;
+                        AppDoEv();
+                        if (dgvr.Cells[2].Value.ToString().Equals(cellname))
+                        {
+                            bFound = true;
+                            dgvr.Selected = true;
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+
+        private void selectAllButOneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var grps = foundFiles.GroupBy(f => f.hash);
+            foreach (var grp in grps)
+            {
+                int ntot = grp.Count()-1;
+                int ncnt = 0;
+                foreach (var fil in grp.Take(ntot))
+                {
+                    string cellname = fil.path;
+                    foreach (DataGridViewRow dgvr in dataGridView1.Rows)
+                    {
+                        if (ncnt==ntot)
+                            break;
+                        AppDoEv();
+                        if (dgvr.Cells[2].Value.ToString().Equals(cellname))
+                        {
+                            dgvr.Selected = true;
+                            ncnt++;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
