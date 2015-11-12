@@ -17,12 +17,14 @@ namespace MyDuplicatedFileFinder
         {
             InitializeComponent();
         }
-        int ColumnIndex = 0;
-        bool bBreak = false;
-        List<file> foundFiles = new List<file>();
-        List<file> duplicatedFiles = new List<file>();
-        Dictionary<int, int> ColWidth = new Dictionary<int, int>();
-        int findSize {
+
+        private int ColumnIndex = 0;
+        private bool bBreak = false;
+        private List<file> foundFiles = new List<file>();
+        private List<file> duplicatedFiles = new List<file>();
+        private Dictionary<int, int> ColWidth = new Dictionary<int, int>();
+
+        private int findSize {
             get
             {
                 return string.IsNullOrEmpty(txtFindSize.Text) ? 0 : int.Parse(txtFindSize.Text);
@@ -31,8 +33,8 @@ namespace MyDuplicatedFileFinder
                 txtFindSize.Text = value.ToString();
             }
         }
-        bool _isprocessing;
-        bool IsProcessing
+        private bool _isprocessing;
+        private bool IsProcessing
         {
             get
             {

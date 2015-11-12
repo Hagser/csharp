@@ -171,8 +171,18 @@ namespace MyAniApp
             else
                 i--;
 
-            if (i >= liss.Count-1)
-                bForward = false;
+            if (i >= liss.Count - 1)
+            {
+                if (toolStripLoop.Checked)
+                {
+                    bForward = true;
+                    i = 0;
+                }
+                else
+                {
+                    bForward = false;
+                }
+            }
             else if (i <= 0)
                 bForward = true;
                 
@@ -195,11 +205,65 @@ namespace MyAniApp
             timer1.Enabled = false;
             if (liss.Count > trackBar1.Value)
             {
+                showThumbs(trackBar1.Value);
                 Image img = liss.Select(x => x.Value).ToArray()[trackBar1.Value];
                 pictureBox1.Image = img;
                 this.Text = "MyAniApp - " + trackBar1.Value + "/" + liss.Count;
             }
             System.GC.Collect();
+        }
+
+        private void showThumbs(int value)
+        {
+            int icnt = 5;
+            var imgs = liss.Select(x => x.Value).ToArray().Skip(Math.Max((trackBar1.Value-icnt),0));
+            imgs = imgs.Take(icnt+icnt);
+            int imgcnt = 0;
+            foreach (var img in imgs)
+            {
+                getOrAddPicture(img, imgcnt);
+                imgcnt++;
+            }
+        }
+
+        private void getOrAddPicture(Image img, int imgcnt)
+        {
+            int dw = Convert.ToInt32(Math.Floor((Convert.ToDouble(flowLayoutPanel1.Width) - 2) / 11));
+
+            if (flowLayoutPanel1.Controls.Count > imgcnt)
+            {
+                var pb = flowLayoutPanel1.Controls[imgcnt] as PictureBox;
+                if (pb != null)
+                {
+                    pb.Image = img;
+                    pb.Refresh();
+                }
+            }
+            else
+            {
+                var pic = new PictureBox();
+                pic.Tag = imgcnt-5;
+                pic.Click += (a, b) =>
+                {
+                    try
+                    {
+                        pictureBox1.Image = ((PictureBox)a).Image;
+                        trackBar1.Value += Convert.ToInt32(((PictureBox)a).Tag);
+                        this.Text = "MyAniApp - " + trackBar1.Value + "/" + liss.Count;
+                        showThumbs(trackBar1.Value);
+                    }
+                    catch { }
+                };
+                pic.BorderStyle = BorderStyle.None;
+                pic.Padding = new Padding(0);
+                pic.Image = img;
+                pic.SizeMode = PictureBoxSizeMode.StretchImage;
+                pic.Height = flowLayoutPanel1.Height - 2;
+                pic.Width = dw;
+                flowLayoutPanel1.Controls.Add(pic);
+            }
+
+
         }
 
         private void trackBar1_Enter(object sender, EventArgs e)
@@ -367,5 +431,17 @@ namespace MyAniApp
 
         }
 
+        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.V)
+            {
+                strDir = textBox1.Text;
+                timer1.Enabled = false; liss.Clear(); i = 0; bForward = true;
+                bAbort = true;
+                Thread.Sleep(500);
+                bAbort = false;
+                LoadFiles();
+            }
+        }
     }
 }

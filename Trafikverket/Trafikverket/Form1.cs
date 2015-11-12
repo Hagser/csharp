@@ -95,7 +95,7 @@ namespace Trafikverket
             catch { }
             return _con;
         } }
-        DataTable dtn = new DataTable();
+        private DataTable dtn = new DataTable();
         bool _CanConnect=false;
         bool CanConnect
         {

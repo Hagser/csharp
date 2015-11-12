@@ -43,8 +43,10 @@
             this.animPerHourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripHourText = new System.Windows.Forms.ToolStripTextBox();
             this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.toolStripLoop = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -65,7 +67,7 @@
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Location = new System.Drawing.Point(0, 27);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(639, 393);
+            this.pictureBox1.Size = new System.Drawing.Size(639, 356);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -74,7 +76,7 @@
             // trackBar1
             // 
             this.trackBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.trackBar1.Location = new System.Drawing.Point(0, 446);
+            this.trackBar1.Location = new System.Drawing.Point(0, 455);
             this.trackBar1.Maximum = 100;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(639, 45);
@@ -88,10 +90,11 @@
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(0, 422);
+            this.textBox1.Location = new System.Drawing.Point(0, 385);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(639, 20);
             this.textBox1.TabIndex = 2;
+            this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
             // menuStrip1
             // 
@@ -109,7 +112,8 @@
             // 
             this.animToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.everyNToolStripMenuItem,
-            this.subfoldersToolStripMenuItem});
+            this.subfoldersToolStripMenuItem,
+            this.toolStripLoop});
             this.animToolStripMenuItem.Name = "animToolStripMenuItem";
             this.animToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.animToolStripMenuItem.Text = "Anim";
@@ -119,7 +123,7 @@
             this.everyNToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.everyNPicture});
             this.everyNToolStripMenuItem.Name = "everyNToolStripMenuItem";
-            this.everyNToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.everyNToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.everyNToolStripMenuItem.Text = "Every n";
             // 
             // everyNPicture
@@ -132,7 +136,7 @@
             // 
             this.subfoldersToolStripMenuItem.CheckOnClick = true;
             this.subfoldersToolStripMenuItem.Name = "subfoldersToolStripMenuItem";
-            this.subfoldersToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.subfoldersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.subfoldersToolStripMenuItem.Text = "Subfolders";
             this.subfoldersToolStripMenuItem.CheckedChanged += new System.EventHandler(this.subfoldersToolStripMenuItem_CheckedChanged);
             // 
@@ -175,6 +179,13 @@
             this.startToolStripMenuItem.Text = "Start";
             this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
             // 
+            // exportToolStripMenuItem
+            // 
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.exportToolStripMenuItem.Text = "Export";
+            this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
+            // 
             // fileSystemWatcher1
             // 
             this.fileSystemWatcher1.EnableRaisingEvents = true;
@@ -183,18 +194,26 @@
             this.fileSystemWatcher1.Created += new System.IO.FileSystemEventHandler(this.fileSystemWatcher1_Created);
             this.fileSystemWatcher1.Deleted += new System.IO.FileSystemEventHandler(this.fileSystemWatcher1_Deleted);
             // 
-            // exportToolStripMenuItem
+            // flowLayoutPanel1
             // 
-            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
-            this.exportToolStripMenuItem.Text = "Export";
-            this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 404);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(639, 52);
+            this.flowLayoutPanel1.TabIndex = 4;
+            // 
+            // toolStripLoop
+            // 
+            this.toolStripLoop.CheckOnClick = true;
+            this.toolStripLoop.Name = "toolStripLoop";
+            this.toolStripLoop.Size = new System.Drawing.Size(152, 22);
+            this.toolStripLoop.Text = "Loop";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 491);
+            this.ClientSize = new System.Drawing.Size(639, 500);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.pictureBox1);
@@ -230,6 +249,8 @@
         private System.Windows.Forms.ToolStripTextBox toolStripHourText;
         private System.Windows.Forms.ToolStripMenuItem startToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripLoop;
     }
 }
 
